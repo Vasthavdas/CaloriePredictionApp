@@ -29,3 +29,4 @@ def predict(data: UserInput):
         return {"predicted_calories": round(prediction[0], 2)}
     except Exception as e:
         return {"error": str(e)}
+    # Trigger Azure redeploy
