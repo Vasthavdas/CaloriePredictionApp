@@ -4,17 +4,19 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 
-# Initialize FastAPI app
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 
-# Add CORS middleware (this allows frontend to access backend)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For production, replace * with your frontend domain
+    allow_origins=["*"],  # You can later limit this to "http://localhost:8000"
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Load your trained model
 model = joblib.load("calorie_predictor.joblib")
